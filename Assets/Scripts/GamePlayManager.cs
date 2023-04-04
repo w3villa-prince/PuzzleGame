@@ -18,7 +18,7 @@ public class GamePlayManager : MonoBehaviour
     {
         Vector3 uiPosition = new Vector3(0, 0, 0);
 
-        Debug.Log(" active Player position " + position);
+        // Debug.Log(" active Player position " + position);
         gameObjectActiveUI.transform.position = hitGameObject.transform.position + new Vector3(0, .06f, 0);
         gameObjectActiveUI.SetActive(true);
     }
@@ -41,8 +41,8 @@ public class GamePlayManager : MonoBehaviour
                         hitObject.GetComponentInParent<PlayerController>().setActive = false;
                     }
                 }
-                Debug.Log(hitInfo.collider.name);
-                print("It's working");
+                // Debug.Log(hitInfo.collider.name);
+                Debug.Log("It's working");
 
                 hitObject = hitInfo.collider.gameObject;
                 // ActivePlayerUI(hitObject);

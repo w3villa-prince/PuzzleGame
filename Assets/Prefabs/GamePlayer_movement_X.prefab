@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 2563930704141996516}
   m_Layer: 0
   m_Name: LeftBoxCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 2563930704916222942}
   m_Layer: 0
   m_Name: BAckBoxCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 2563930705414337663}
   m_Layer: 0
   m_Name: FrontBoxCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

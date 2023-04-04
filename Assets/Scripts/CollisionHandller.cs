@@ -7,7 +7,7 @@ public class CollisionHandller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(" tigger enter" + other.name);
+        // Debug.Log(" tigger enter" + other.name);
         movement = false;
 
         Debug.Log(movement);
@@ -15,13 +15,13 @@ public class CollisionHandller : MonoBehaviour
         if (other.name == "Target")
         {
             levelDoneUI.SetActive(true);
-            Debug.Log("target Done ");
+            // Debug.Log("target Done ");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(" tigger Exit");
+        // Debug.Log(" tigger Exit");
         movement = true;
     }
 }
