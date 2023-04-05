@@ -58,8 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8b90179d5d11c498b794245bc1d9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDoneUI: {fileID: 6610522290721377291, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
+  levelDoneUI: {fileID: 0}
   movement: 1
+  gamePlayer: 1
 --- !u!1 &810268517755639102
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,8 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8b90179d5d11c498b794245bc1d9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDoneUI: {fileID: 6610522290721377291, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
+  levelDoneUI: {fileID: 0}
   movement: 1
+  gamePlayer: 1
 --- !u!1 &810268518549420821
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8b90179d5d11c498b794245bc1d9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDoneUI: {fileID: 6610522290721377291, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
+  levelDoneUI: {fileID: 0}
   movement: 1
+  gamePlayer: 1
 --- !u!1 &810268519319177702
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,8 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8b90179d5d11c498b794245bc1d9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDoneUI: {fileID: 6610522290721377291, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
+  levelDoneUI: {fileID: 0}
   movement: 1
+  gamePlayer: 1
 --- !u!1 &810268519704263693
 GameObject:
   m_ObjectHideFlags: 0

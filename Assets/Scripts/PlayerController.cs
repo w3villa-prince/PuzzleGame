@@ -70,14 +70,21 @@ public class PlayerController : MonoBehaviour
             UpdatePositionValue();
 
             gameObjectUI.SetActive(true);
+
             gameObjectUI.transform.position = transform.position + new Vector3(0, .07f, 0);
         }
         else
         {
             gameObjectUI.SetActive(false);
+
+            if (GetComponentInChildren<ExtraBoxColliderHandeller>())
+            {
+                rightCollision.movement = true;
+                leftCollision.movement = true;
+                backCollision.movement = true;
+                frontCollision.movement = true;
+            }
         }
-        ///
-        /**/
     }
 
     public void UpdatePositionValue()

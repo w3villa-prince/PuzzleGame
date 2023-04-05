@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.8}
+  m_Size: {x: 0.3, y: 1, z: 0.7}
   m_Center: {x: -0.05, y: 0.6, z: 0}
 --- !u!114 &9062269821918120443
 MonoBehaviour:
@@ -104,7 +104,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.8}
+  m_Size: {x: 0.3, y: 1, z: 0.7}
   m_Center: {x: 0.05, y: 0.6, z: 0}
 --- !u!114 &9062269821951918879
 MonoBehaviour:
@@ -341,7 +341,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.3}
+  m_Size: {x: 0.7, y: 1, z: 0.3}
   m_Center: {x: 0, y: 0.6, z: -0.05}
 --- !u!114 &9062269822951615584
 MonoBehaviour:
@@ -484,7 +484,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.3}
+  m_Size: {x: 0.7, y: 1, z: 0.3}
   m_Center: {x: 0, y: 0.6, z: 0.05}
 --- !u!114 &9062269823425858497
 MonoBehaviour:
@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 95cf166e907a3f6479a09bd8585c7c80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 722a6aad28a226041846309f879a6288, type: 2}
+      objectReference: {fileID: 2100000, guid: c62d520a2b0941747b2405bf79989f9d, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cf166e907a3f6479a09bd8585c7c80, type: 3}
       propertyPath: m_Name
       value: Sedan_A_beige
