@@ -30305,7 +30305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6610522290721377291, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6610522290721377293, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -30346,6 +30346,10 @@ PrefabInstance:
     - target: {fileID: 6610522290721377295, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6610522290721377295, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6610522290721377295, guid: 001dd045a3eff844cbfa104ea1e6bea7, type: 3}
       propertyPath: m_LocalPosition.x

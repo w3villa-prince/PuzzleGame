@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class GamePlayManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class GamePlayManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // DOTween.Init(autoKillMode, useSafeMode, logBehaviour);
     }
 
     public void ActivePlayerUI(GameObject hitGameObject)
@@ -21,6 +23,7 @@ public class GamePlayManager : MonoBehaviour
         // Debug.Log(" active Player position " + position);
         gameObjectActiveUI.transform.position = hitGameObject.transform.position + new Vector3(0, .06f, 0);
         gameObjectActiveUI.SetActive(true);
+        gameObjectActiveUI.transform.DOScaleX(1, 1);
     }
 
     // Update is called once per frame
