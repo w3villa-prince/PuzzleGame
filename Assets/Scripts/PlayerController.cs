@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,11 +16,16 @@ public class PlayerController : MonoBehaviour
     public CollisionHandller frontCollision;
     public CollisionHandller backCollision;
 
+    [SerializeField] private AudioSource moveSounds;
+    [SerializeField] private AudioSource wrongSounds;
+
     public bool setActive = false;
 
     // Start is called before the first frame update
     private void Start()
     {
+        moveSounds.Stop();
+        wrongSounds.Stop();
     }
 
     private void UpdateXIncrement()
@@ -27,8 +33,12 @@ public class PlayerController : MonoBehaviour
         // Vector3 updatePosition = gameObject.transform.position + updatePosX;
 
         // gameObject.transform.position = updatePosition;
-
-        transform.Translate(updatePosZ);
+        // DOTween.KillAll();
+        // Debug.Log(transform.position.x);
+        StartCoroutine(MoveAmimation(updatePosZ));
+        //transform.DOMoveX(updatePosX.x, .1f);
+        // Debug.Log(transform.position.x);
+        // transform.Translate(updatePosZ);
     }
 
     private void UpdateZIncrement()
@@ -36,7 +46,12 @@ public class PlayerController : MonoBehaviour
         // Vector3 updatePosition = gameObject.transform.position + updatePosZ;
 
         //gameObject.transform.position = updatePosition;
-        transform.Translate(updatePosX);
+        // transform.Translate(updatePosX);
+        //  DOTween.KillAll();
+        // Debug.Log(transform.position.z);
+        //transform.DOMoveZ(updatePosZ.z, .1f);
+        StartCoroutine(MoveAmimation(updatePosX));
+        // Debug.Log(transform.position.z);
     }
 
     private void UpdateXDecrement()
@@ -45,8 +60,13 @@ public class PlayerController : MonoBehaviour
 
         // gameObject.transform.position = updatePosition;
 
-        transform.Translate(-updatePosZ);
-        Debug.Log(transform.position);
+        // transform.Translate(-updatePosZ);
+        //Debug.Log(transform.position);
+        // DOTween.KillAll();
+        //Debug.Log(transform.position.x);
+        //transform.DOMoveX(-updatePosX.x, .1f);
+        StartCoroutine(MoveAmimation(-updatePosZ));
+        // Debug.Log(transform.position.x);
     }
 
     private void UpdateZDecrement()
@@ -55,11 +75,17 @@ public class PlayerController : MonoBehaviour
 
         // gameObject.transform.position = updatePosition;
 
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
 
-        transform.Translate(-updatePosX);
+        //transform.Translate(-updatePosX);
 
-        Debug.Log(transform.position);
+        // Debug.Log(transform.position);
+        // DOTween.KillAll();
+        //  Debug.Log(transform.position.z);
+
+        StartCoroutine(MoveAmimation(-updatePosX));
+        //transform.DOMoveZ(-updatePosZ.z, .1f);
+        // Debug.Log(transform.position.z);
     }
 
     // Update is called once per frame
@@ -89,45 +115,86 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePositionValue()
     {
-        if (Input.GetKeyDown(KeyCode.W) && movement_In_Z_Pos && rightCollision.movement)
+        if (Input.GetKeyUp(KeyCode.W) && movement_In_Z_Pos && rightCollision.movement)
         {
-            Debug.Log(frontCollision.movement);
+            moveSounds.Play();
+            wrongSounds.Stop();
+            Debug.Log("rightCollision.movement" + rightCollision.movement);
             Debug.Log(" update positon z+ ");
             UpdateZIncrement();
         }
-
-        if (Input.GetKeyDown(KeyCode.S) && movement_In_Z_Pos && leftCollision.movement)
+        else if (Input.GetKeyUp(KeyCode.W) && movement_In_Z_Pos)
         {
-            Debug.Log(backCollision.movement);
+            moveSounds.Stop();
+            wrongSounds.Play();
+            StartCoroutine(WrongMoveAmimation(updatePosX));
+        }
+
+        if (Input.GetKeyUp(KeyCode.S) && movement_In_Z_Pos && leftCollision.movement)
+        {
+            moveSounds.Play();
+            wrongSounds.Stop();
+            Debug.Log(" leftCollision.movement" + leftCollision.movement);
             Debug.Log(" update positon Z- ");
             UpdateZDecrement();
         }
-
-        if (Input.GetKeyDown(KeyCode.A) && movement_In_X_Pos && frontCollision.movement)
+        else if (Input.GetKeyUp(KeyCode.S) && movement_In_Z_Pos)
         {
+            moveSounds.Stop();
+            wrongSounds.Play();
+            StartCoroutine(WrongMoveAmimation(-updatePosX));
+        }
+
+        if (Input.GetKeyUp(KeyCode.A) && movement_In_X_Pos && backCollision.movement)
+        {
+            moveSounds.Play();
+            wrongSounds.Stop();
+            Debug.Log("backCollision.movement" + backCollision.movement);
             Debug.Log(" update positon X+ ");
 
+            UpdateXDecrement();
+        }
+        else if (Input.GetKeyUp(KeyCode.A) && movement_In_X_Pos)
+        {
+            StartCoroutine(WrongMoveAmimation(-updatePosZ));
+            moveSounds.Stop();
+            wrongSounds.Play();
+        }
+
+        if (Input.GetKeyUp(KeyCode.D) && movement_In_X_Pos && frontCollision.movement)
+        {
+            moveSounds.Play();
+            wrongSounds.Stop();
+            Debug.Log("frontCollision.movement" + frontCollision.movement);
+            Debug.Log(" update positon X- ");
             UpdateXIncrement();
         }
-        if (Input.GetKeyDown(KeyCode.D) && movement_In_X_Pos && backCollision.movement)
+        else if (Input.GetKeyUp(KeyCode.D) && movement_In_X_Pos)
         {
-            Debug.Log(" update positon X- ");
-            UpdateXDecrement();
+            moveSounds.Stop();
+            wrongSounds.Play();
+            StartCoroutine(WrongMoveAmimation(-updatePosZ));
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private IEnumerator MoveAmimation(Vector3 pos)
     {
-        // Debug.Log("Collision Detceat ");
-        if (collision.gameObject.CompareTag("GameController"))
-        {
-            Debug.Log("Collision Detceat ");
+        transform.Translate(pos / 5);
+        yield return new WaitForSeconds(.01f);
+        transform.Translate(pos / 5);
+        yield return new WaitForSeconds(.01f);
+        transform.Translate(pos / 5);
+        yield return new WaitForSeconds(.01f);
+        transform.Translate(pos / 5);
+        yield return new WaitForSeconds(.01f);
+        transform.Translate(pos / 5);
+        yield return new WaitForSeconds(.01f);
+    }
 
-            // collidervalue = true;
-        }
-        else
-        {
-            // collidervalue = false;
-        }
+    private IEnumerator WrongMoveAmimation(Vector3 pos)
+    {
+        transform.Translate(pos / 5);
+        yield return new WaitForSeconds(.01f);
+        transform.Translate(-pos / 5);
     }
 }

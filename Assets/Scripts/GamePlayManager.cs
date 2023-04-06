@@ -28,7 +28,7 @@ public class GamePlayManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(Input.mousePosition);
+            // Debug.Log(Input.mousePosition);
             RaycastHit hitInfo = new RaycastHit();
             //  if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))//
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && hitInfo.transform.tag == "Player")
@@ -41,8 +41,8 @@ public class GamePlayManager : MonoBehaviour
                         hitObject.GetComponentInParent<PlayerController>().setActive = false;
                     }
                 }
-                Debug.Log(hitInfo.collider.name);
-                print("It's working");
+                //Debug.Log(hitInfo.collider.name);
+                Debug.Log("It's working");
 
                 hitObject = hitInfo.collider.gameObject;
                 // ActivePlayerUI(hitObject);

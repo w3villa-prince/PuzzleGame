@@ -13,19 +13,15 @@ public class CollisionHandller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /* if (GetComponentInParent<ExtraBoxColliderHandeller>())
-         {
-             GetComponentInParent<ExtraBoxColliderHandeller>().extraBoxAction = false;
-         }*/
-        Debug.Log(" tigger enter" + other.name);
+        // Debug.Log(" tigger enter" + other.name);
         movement = false;
 
-        Debug.Log(movement);
+        //Debug.Log(movement);
 
         if (other.name == "Target" && gamePlayer)
         {
             levelDoneUI.SetActive(true);
-            Debug.Log("target Done ");
+            // Debug.Log("target Done ");
         }
     }
 
@@ -35,7 +31,7 @@ public class CollisionHandller : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(" tigger Exit");
+        //Debug.Log(" tigger Exit");
         movement = true;
     }
 }
