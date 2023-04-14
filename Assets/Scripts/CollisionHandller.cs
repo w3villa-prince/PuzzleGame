@@ -13,7 +13,7 @@ public class CollisionHandller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log(" tigger enter" + other.name);
+        Debug.Log(" tigger enter" + other.name);
         movement = false;
 
         //Debug.Log(movement);
@@ -21,7 +21,7 @@ public class CollisionHandller : MonoBehaviour
         if (other.name == "Target" && gamePlayer)
         {
             levelDoneUI.SetActive(true);
-            // Debug.Log("target Done ");
+            Debug.Log("target Done ");
         }
     }
 

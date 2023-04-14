@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     public bool setActive = false;
 
+    private bool movedone = true;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -88,11 +90,32 @@ public class PlayerController : MonoBehaviour
         // Debug.Log(transform.position.z);
     }
 
+    public Vector2 turn;
+    private bool moveDirction = false;
+
+    public void MouseActionXIncrement()
+    {
+        if (Input.GetAxis("Mouse Y") > 0)
+            moveDirction = true;
+    }
+
+    public bool MouseActionXDecrement()
+    {
+        if (Input.GetAxis("Mouse Y") < -2)
+            return true;
+        else return false;
+    }
+
     // Update is called once per frame
     private void Update()
     {
         if (setActive)
         {
+            Debug.Log("X value ==" + turn.x + " change input " + Input.GetAxis("Mouse X"));
+            Debug.Log("----------------------------------------------------------------------------------------------");
+            Debug.Log("y value ==" + turn.y + " change input " + Input.GetAxis("Mouse Y"));
+            turn.x += Input.GetAxis("Mouse X");
+            turn.y += Input.GetAxis("Mouse Y");
             UpdatePositionValue();
 
             gameObjectUI.SetActive(true);
@@ -115,8 +138,12 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePositionValue()
     {
-        if (Input.GetKeyUp(KeyCode.W) && movement_In_Z_Pos && rightCollision.movement)
+        MouseActionXIncrement();
+        // Debug.Log("__________________________________________________________________________" + movedone);
+        if ((Input.GetAxis("Mouse Y") > 0) && movement_In_Z_Pos && rightCollision.movement && movedone || Input.GetKeyUp(KeyCode.W) && movement_In_Z_Pos && rightCollision.movement)
         {
+            movedone = false;
+            // moveDirction = false;
             moveSounds.Play();
             wrongSounds.Stop();
             Debug.Log("rightCollision.movement" + rightCollision.movement);
@@ -130,8 +157,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WrongMoveAmimation(updatePosX));
         }
 
-        if (Input.GetKeyUp(KeyCode.S) && movement_In_Z_Pos && leftCollision.movement)
+        if ((Input.GetAxis("Mouse Y") < 0) && movement_In_Z_Pos && leftCollision.movement && movedone || Input.GetKeyUp(KeyCode.S) && movement_In_Z_Pos && leftCollision.movement)
         {
+            movedone = false;
             moveSounds.Play();
             wrongSounds.Stop();
             Debug.Log(" leftCollision.movement" + leftCollision.movement);
@@ -145,8 +173,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WrongMoveAmimation(-updatePosX));
         }
 
-        if (Input.GetKeyUp(KeyCode.A) && movement_In_X_Pos && backCollision.movement)
+        if ((Input.GetAxis("Mouse Y") < 0) && movement_In_X_Pos && backCollision.movement && movedone || Input.GetKeyUp(KeyCode.A) && movement_In_X_Pos && backCollision.movement)
         {
+            movedone = false;
             moveSounds.Play();
             wrongSounds.Stop();
             Debug.Log("backCollision.movement" + backCollision.movement);
@@ -161,8 +190,9 @@ public class PlayerController : MonoBehaviour
             wrongSounds.Play();
         }
 
-        if (Input.GetKeyUp(KeyCode.D) && movement_In_X_Pos && frontCollision.movement)
+        if ((Input.GetAxis("Mouse Y") > 0) && movement_In_X_Pos && frontCollision.movement && movedone || Input.GetKeyUp(KeyCode.D) && movement_In_X_Pos && frontCollision.movement)
         {
+            movedone = false;
             moveSounds.Play();
             wrongSounds.Stop();
             Debug.Log("frontCollision.movement" + frontCollision.movement);
@@ -188,7 +218,8 @@ public class PlayerController : MonoBehaviour
         transform.Translate(pos / 5);
         yield return new WaitForSeconds(.01f);
         transform.Translate(pos / 5);
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(2f);
+        movedone = true;
     }
 
     private IEnumerator WrongMoveAmimation(Vector3 pos)
